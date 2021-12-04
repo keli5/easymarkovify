@@ -19,15 +19,7 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 
-try:
-    r_arg = sys.argv
-except IndexError:
-    r_arg = None
-except Exception as e:
-    print("what the fuck: ")
-    print(str(e))
-
-if ('-r' in r_arg) or not exists(MODEL_FILE):
+if ('-r' in sys.argv) or not exists(MODEL_FILE):
     print(bcolors.WARNING + "Building model")
     with open("corpus.txt", encoding="utf-8") as f:
         text = f.read()
@@ -48,7 +40,7 @@ else:
         exit(1)
 
 print(bcolors.ENDC)
-if '-i' in r_arg:
+if '-i' in sys.argv:
     starting = ""
     while True:
         print(bcolors.OKBLUE + "Options:")
@@ -67,12 +59,10 @@ if '-i' in r_arg:
             if starting == "":
                 if prev != "":
                     starting = prev
-                    print(model.make_sentence_with_start(starting))
                 else:
                     print(model.make_sentence())
                     continue
-            else:
-                print(model.make_sentence_with_start(starting))  # :ugh:
+            print(model.make_sentence_with_start(starting))
 
         elif choice == 'q':
             exit(0)
