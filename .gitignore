@@ -1,0 +1,4 @@
+model.json
+corpus.txt
+scrape.py
+*.cpy*
