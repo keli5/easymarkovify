@@ -2,7 +2,8 @@ import markovify
 import sys
 import json
 from os.path import exists
-STATE_SIZE = 2  # The number of words to consider when generating a new sentence. ae
+STATE_SIZE = 3  # The number of words to consider when generating a new sentence. ae
+TRIES = STATE_SIZE * 10  # The number of times to try to generate a sentence before giving up.
 MODEL_FILE = 'model.json'  # The name of the file to save the model to
 MODEL_TYPE = markovify.Text  # The type of model to use. markovify.Text or markovify.NewlineText (or a custom model)
 
@@ -51,7 +52,7 @@ if '-i' in sys.argv:
 
         print(bcolors.ENDC, end="")
         if choice == 'g':
-            print(model.make_sentence())
+            print(model.make_sentence(tries=TRIES))
 
         elif choice == 's':
             prev = starting or ""
@@ -60,7 +61,7 @@ if '-i' in sys.argv:
                 if prev != "":
                     starting = prev
                 else:
-                    print(model.make_sentence())
+                    print(model.make_sentence(tries=TRIES))
                     continue
             print(model.make_sentence_with_start(starting))
 
@@ -68,7 +69,7 @@ if '-i' in sys.argv:
             exit(0)
 
         elif choice == "":
-            print(model.make_sentence())
+            print(model.make_sentence(tries=TRIES))
 
 else:
-    print(model.make_sentence())
+    print(model.make_sentence(tries=TRIES))
