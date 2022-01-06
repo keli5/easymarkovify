@@ -3,7 +3,7 @@ import sys
 import json
 from os.path import exists
 STATE_SIZE = 3  # The number of words to consider when generating a new sentence. ae
-TRIES = STATE_SIZE * 10  # The number of times to try to generate a sentence before giving up.
+TRIES = STATE_SIZE * 12  # The number of times to try to generate a sentence before giving up.
 MODEL_FILE = 'model.json'  # The name of the file to save the model to
 MODEL_TYPE = markovify.Text  # The type of model to use. markovify.Text or markovify.NewlineText (or a custom model)
 
