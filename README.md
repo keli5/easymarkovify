@@ -8,3 +8,5 @@ run with -i for interactive mode<br>
 submit issues and pulls if you like<br>
 please keep your code clean<br>
 .flake8 file included<br>
+<br>
+requires **markovify** and **bcolors**
