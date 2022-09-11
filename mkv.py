@@ -44,13 +44,12 @@ print(bcolors.ENDC)
 if '-i' in sys.argv:
     starting = ""
     while True:
-        print(bcolors.OKBLUE + "Options:")
+        print("Options:")
         print("g - Generate")
         print("s - Generate + start")
         print("q - Quit")
-        choice = input(bcolors.OKGREEN + "Choice (g): ")
+        choice = input("Choice (g): ")
 
-        print(bcolors.ENDC, end="")
         if choice == 'g':
             print(model.make_sentence(tries=TRIES))
 
